@@ -1,0 +1,126 @@
+package sudheer;
+import java.util.*;
+public class sample {
+
+	
+
+		public static void main (String[] args) 
+	    {  
+			Scanner key = new Scanner(System.in);
+			Product pro = new Product();
+			System.out.println("Enter 1 to add product details");
+			System.out.println("Enter 2 to search the detail ");
+			System.out.println("Enter 3 to get all details"); 
+			int option = key.nextInt();
+			switch (option) 
+			{ 
+			case 1:
+			{
+				   System.out.println("enter product name");
+				   String proName = key.nextLine();
+				   System.out.println("enter product description");
+				   String proDesc = key.nextLine();
+				   System.out.println("enter product price"); 
+				   int proPrice = key.nextInt();
+				   String categoryType = "";
+				   List li = new ArrayList(); 
+				   li.add("1.electronics");
+				   li.add("2.fashion");
+				   li.add("3.supermarket"); 
+				   System.out.println(li);
+				   int category = key.nextInt();
+				   switch(category) 
+				   { 
+				   case 1: categoryType="electronics";
+				           break; 
+				   case 2: categoryType="fashion"; 
+				           break; 
+				   case 3: categoryType="supermarket"; 
+				           break;
+				        default:System.out.println("please enter above numebrs only");
+				   } 
+				   
+				    
+				   pro.add(proName, proDesc, proPrice,categoryType);
+				   break; 
+			}
+			case 2:  
+			{
+				  System.out.println("Enter product code");
+				  int proCode = key.nextInt();
+				  pro.getDetails(proCode);
+				  break;
+			} 
+			case 3: 
+			{ 
+				
+				pro.getAllDetails();
+				
+				break;
+			}
+			default:System.out.println("please enter only above numbers");
+			
+			}
+	    } 
+
+	} 
+
+===================================================================================================================================================
+
+package sudheer;
+import java.util.*;
+class Product 
+{  
+	private String proName ; 
+	private String proDesc  ;
+	private int proPrice ;
+	private String categoryType;
+	private String val;
+	public static  HashMap<Integer,String> h = new HashMap<Integer, String>();
+	HashMap s = new HashMap();
+	int min = 1001;
+	int max = 9999;
+	double ra= (Math.random()*((max-min)+1))+min;
+	int ra1=(int)ra;
+	private int proCode = ra1;
+	
+	 
+   public void add(String proName,String proDesc,int proPrice,String categoryType) 
+   {   
+	   this.proName=proName;
+	   this.proDesc=proDesc;
+	   this.proPrice=proPrice;
+	   this.categoryType=categoryType;
+	   this.val = "product name"+proName+"product desc"+proDesc+"product price" + proPrice+"category"+categoryType;
+	   System.out.println("product added sucessfully and your productcode is"+proCode);
+	   sudh();
+	   
+   } 
+
+	public  HashMap sudh() 
+     { 
+         Product  x = new Product();
+         h.put(proCode,val);
+        // System.out.println(h.get(5405));
+         return h;
+     } 
+   
+   public void getDetails(int proCode) 
+   { 
+	   s=sudh();
+	 System.out.println(s.get(proCode));
+	  
+   }
+
+public void getAllDetails() {
+	  s=sudh();
+	   System.out.println(s.values());
+	   
+}
+
+} 
+
+
+
+
+
